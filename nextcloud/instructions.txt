@@ -1,0 +1,17 @@
+Find the id of the drive:
+sudo blkid
+
+Make mountpoint
+mkdir /mnt/hd1
+sudo chown dominic:dominic /mnt/hd1
+
+Edit fstab
+sudo vim /etc/fstab
+UUID=<UUID> /mnt/hd1 ext4 defaults,nofail 0 0
+
+Apply fstab to mount drive
+systemctl daemon-reload
+sudo mount -a
+
+If neccesary, apply correct permissions to all files on drive
+sudo chmod -R 777 /mnt/hd1
