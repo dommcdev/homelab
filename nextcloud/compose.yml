@@ -89,7 +89,6 @@ networks:
     driver: bridge
     enable_ipv6: false
     driver_opts:
-      com.docker.network.driver.mtu: "1280" # Can be set to 9001 for jumbo frames
       com.docker.network.bridge.host_binding_ipv4: "127.0.0.1" # Security hardening
       com.docker.network.bridge.enable_icc: "true"
       com.docker.network.bridge.default_bridge: "false"
