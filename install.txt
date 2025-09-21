@@ -1,0 +1,6 @@
+Install/setup OpenSSH
+Install/setup Tailscale
+Install docker
+Install essentials
+Mount drives
+Install nextcloud
