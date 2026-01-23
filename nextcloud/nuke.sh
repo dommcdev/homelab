@@ -5,7 +5,7 @@ docker volume rm $(docker volume list -q --filter name=^nextcloud-aio --filter n
 docker network remove nextcloud-aio
 
 # Optional: Remove data directories (uncomment if needed)
-sudo rm -rf /mnt/ncdata
+#sudo rm -rf /mnt/ncdata
 
 # Restart system services
 sudo systemctl daemon-reload
