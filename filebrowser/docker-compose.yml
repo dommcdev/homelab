@@ -1,18 +1,14 @@
 services:
   filebrowser:
-    build: ../../  # Build from the filebrowser-onlyoffice repo root
+    image: filebrowser-onlyoffice  # Your locally-built image
     container_name: filebrowser
     restart: unless-stopped
     networks:
       - homelab
     volumes:
-      - ./data:/srv
-      - ./database/filebrowser.db:/database/filebrowser.db
-    command: 
-      - --database=/database/filebrowser.db
-      - --root=/srv
-      - --address=0.0.0.0
-      - --port=8080
+      - ~/my-data:/srv                          # Your files to browse
+      - ~/filebrowser/config:/config            # settings.json lives here
+      - ~/filebrowser/database:/database        # filebrowser.db lives here
 
   onlyoffice:
     image: onlyoffice/documentserver

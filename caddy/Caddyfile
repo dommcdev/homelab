@@ -3,7 +3,7 @@ cloud.dommcdev.net {
     tls {
         dns cloudflare {env.CLOUDFLARE_API_TOKEN}
     }
-    reverse_proxy filebrowser:8080
+    reverse_proxy filebrowser:80
 }
 
 # OnlyOffice Document Server
