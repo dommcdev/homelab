@@ -28,6 +28,9 @@ services:
       - redis
       - database
     restart: always
+    networks:
+      - homelab
+      - default
     healthcheck:
       disable: false
 
@@ -72,3 +75,7 @@ services:
 
 volumes:
   model-cache:
+
+networks:
+  homelab:
+    external: true

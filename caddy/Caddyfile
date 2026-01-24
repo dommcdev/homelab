@@ -7,27 +7,18 @@ cloud.dommcdev.net {
     reverse_proxy filebrowser:80
 }
 
-# OnlyOffice Document Server
+# OnlyOffice Document Server CE
 office.dommcdev.net {
     tls {
         dns cloudflare {env.CLOUDFLARE_API_TOKEN}
     }
-    #respond "Hello from Caddy! SSL for onlyoffice is working"
     reverse_proxy onlyoffice:80
 }
 
+# Immich
 photos.dommcdev.net {
     tls {
         dns cloudflare {env.CLOUDFLARE_API_TOKEN}
     }
-    #respond "Hello from Caddy! SSL for onlyoffice is working"
-    reverse_proxy immich:80
+    reverse_proxy immich-server:2283
 }
-
-# Add more services here, e.g.:
-# photos.dommcdev.net {
-#     tls {
-#         dns cloudflare {env.CLOUDFLARE_API_TOKEN}
-#     }
-#     reverse_proxy immich:3001
-# }
