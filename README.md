@@ -1,75 +1,46 @@
 # Homelab Setup
 
-Modular Docker Compose setup for homelab services.
+Filebrowser, OnlyOffice, Immich, Gitlab, etc, via Caddy w/DNS-01 challenge
 
-## Structure
 
-```
-homelab/
-├── caddy/           # Reverse proxy with auto HTTPS
-│   ├── Caddyfile
-│   ├── docker-compose.yml
-│   └── Dockerfile
-└── filebrowser/     # FileBrowser + OnlyOffice
-    ├── docker-compose.yml
-    ├── data/        # Your files
-    └── database/    # FileBrowser DB
-```
-
-## Initial Setup
-
-### 1. Create the shared network
-
-```bash
-docker network create homelab
-```
-
-### 2. Configure Caddy
+### 1. Configure Caddy
 
 ```bash
 cd caddy
 cp .env.example .env
 # Edit .env and add your Cloudflare API token
+docker compose up -d
 ```
 
-### 3. Configure FileBrowser
+### 2. Configure FileBrowser
 
 ```bash
-cd ../filebrowser
+cd filebrowser
 cp .env.example .env
 # Edit .env and set a secure JWT secret
 
-# Initialize the FileBrowser database
-touch database/filebrowser.db
-docker-compose run --rm filebrowser config init
-docker-compose run --rm filebrowser users add admin yourpassword --perm.admin
+mkdir -p ~/filebrowser/config ~/filebrowser/database ~/files && chown -R 1000:1000 ~/filebrowser ~/files
 
-# Configure OnlyOffice integration
-docker-compose run --rm filebrowser config set --onlyoffice.url "https://docs.dommcdev.net"
-docker-compose run --rm filebrowser config set --onlyoffice.fileBrowserUrl "http://filebrowser:8080"
-docker-compose run --rm filebrowser config set --onlyoffice.jwtSecret "your-secret-key-here"  # Must match .env
+docker compose up -d
+
+# Run once to configure onlyoffice stuff (replace YOUR_SECRET_HERE with above JWT secret)
+docker compose exec filebrowser filebrowser config set \
+    --onlyoffice.url="https://office.dommcdev.net" \
+    --onlyoffice.jwtSecret="YOUR_SECRET_HERE" \
+    --onlyoffice.fileBrowserUrl="http://filebrowser:80" \
+    --onlyoffice.enableFullscreen=true
+
+# Get admin password (username is admin)
+docker compose logs filebrowser | grep "Password:"
 ```
 
-### 4. Start everything
+### 3. Configure Immich
 
 ```bash
-# Start Caddy first
-cd ../caddy
-docker-compose up -d
+cd immich
+cp .env.example .env #change postgress secret if desired
 
-# Then FileBrowser + OnlyOffice
-cd ../filebrowser
+mkdir -p ~/immich ~/files && chown -R 1000:1000 ~/immich ~/files
+
 docker-compose up -d
 ```
-
-## Access
-
-- **FileBrowser:** https://cloud.dommcdev.net
-- **OnlyOffice:** https://docs.dommcdev.net (used internally by FileBrowser)
-
-## Adding More Services
-
-1. Create a new directory: `mkdir ../immich`
-2. Add your `docker-compose.yml` with `networks: homelab` (external)
-3. Add an entry to `caddy/Caddyfile`
-4. Reload Caddy: `docker-compose exec caddy caddy reload --config /etc/caddy/Caddyfile`
