@@ -3,6 +3,7 @@ cloud.dommcdev.net {
     tls {
         dns cloudflare {env.CLOUDFLARE_API_TOKEN}
     }
+    #respond "Hello from Caddy! SSL for cloud is working"
     reverse_proxy filebrowser:80
 }
 
@@ -11,7 +12,16 @@ office.dommcdev.net {
     tls {
         dns cloudflare {env.CLOUDFLARE_API_TOKEN}
     }
+    #respond "Hello from Caddy! SSL for onlyoffice is working"
     reverse_proxy onlyoffice:80
+}
+
+photos.dommcdev.net {
+    tls {
+        dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+    }
+    #respond "Hello from Caddy! SSL for onlyoffice is working"
+    reverse_proxy immich:80
 }
 
 # Add more services here, e.g.:
