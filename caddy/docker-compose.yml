@@ -17,7 +17,8 @@ services:
 
 networks:
   homelab:
-    external: true
+    name: homelab
+    driver: bridge
 
 volumes:
   caddy_data:
