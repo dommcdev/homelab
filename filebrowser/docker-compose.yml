@@ -1,0 +1,38 @@
+services:
+  filebrowser:
+    build: ../../  # Build from the filebrowser-onlyoffice repo root
+    container_name: filebrowser
+    restart: unless-stopped
+    networks:
+      - homelab
+    volumes:
+      - ./data:/srv
+      - ./database/filebrowser.db:/database/filebrowser.db
+    command: 
+      - --database=/database/filebrowser.db
+      - --root=/srv
+      - --address=0.0.0.0
+      - --port=8080
+
+  onlyoffice:
+    image: onlyoffice/documentserver
+    container_name: onlyoffice
+    restart: unless-stopped
+    networks:
+      - homelab
+    environment:
+      - JWT_ENABLED=true
+      - JWT_SECRET=${ONLYOFFICE_JWT_SECRET}
+    volumes:
+      - onlyoffice_data:/var/www/onlyoffice/Data
+      - onlyoffice_logs:/var/log/onlyoffice
+      - onlyoffice_lib:/var/lib/onlyoffice
+
+networks:
+  homelab:
+    external: true
+
+volumes:
+  onlyoffice_data:
+  onlyoffice_logs:
+  onlyoffice_lib:

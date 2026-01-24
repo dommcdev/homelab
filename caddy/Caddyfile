@@ -1,0 +1,23 @@
+# FileBrowser
+cloud.dommcdev.net {
+    tls {
+        dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+    }
+    reverse_proxy filebrowser:8080
+}
+
+# OnlyOffice Document Server
+office.dommcdev.net {
+    tls {
+        dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+    }
+    reverse_proxy onlyoffice:80
+}
+
+# Add more services here, e.g.:
+# photos.dommcdev.net {
+#     tls {
+#         dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+#     }
+#     reverse_proxy immich:3001
+# }
