@@ -4,8 +4,8 @@
 
 Create the necessary directories on your server:
 ```bash
-mkdir -p ~/filebrowser/config ~/filebrowser/database ~/my-data
-chown -R 1000:1000 ~/filebrowser ~/my-data
+mkdir -p ~/filebrowser/config ~/filebrowser/database ~/files
+chown -R 1000:1000 ~/filebrowser ~/files
 ```
 
 Create the external network (shared by Caddy and other stacks):

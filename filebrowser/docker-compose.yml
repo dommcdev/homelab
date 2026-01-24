@@ -6,7 +6,7 @@ services:
     networks:
       - homelab
     volumes:
-      - ~/my-data:/srv                          # Your files to browse
+      - ~/files:/srv                          # Your files to browse
       - ~/filebrowser/config:/config            # settings.json lives here
       - ~/filebrowser/database:/database        # filebrowser.db lives here
 
