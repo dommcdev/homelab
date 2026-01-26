@@ -5,3 +5,5 @@
 *.key
 *.cert
 *.p12
+data
+postgres

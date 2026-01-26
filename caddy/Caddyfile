@@ -30,3 +30,11 @@ git.dommcdev.net {
     }
     reverse_proxy gitlab:80
 }
+
+# Gitea
+gitea.dommcdev.net {
+    tls {
+        dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+    }
+    reverse_proxy gitea:3000
+}
