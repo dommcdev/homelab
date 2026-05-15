@@ -1,0 +1,38 @@
+services:
+  filebrowser:
+    image: filebrowser-onlyoffice  # Your locally-built image
+    container_name: filebrowser
+    restart: unless-stopped
+    networks:
+      - homelab
+    volumes:
+      - ~/files:/srv                          # Your files to browse
+      - ~/filebrowser/config:/config            # settings.json lives here
+      - ~/filebrowser/database:/database        # filebrowser.db lives here
+    environment:
+      - FB_ONLYOFFICE_URL=https://office.dommcdev.net
+      - FB_ONLYOFFICE_JWT_SECRET=${ONLYOFFICE_JWT_SECRET}
+      - FB_ONLYOFFICE_FILE_BROWSER_URL=http://filebrowser:80
+
+  onlyoffice:
+    image: onlyoffice/documentserver
+    container_name: onlyoffice
+    restart: unless-stopped
+    networks:
+      - homelab
+    environment:
+      - JWT_ENABLED=true
+      - JWT_SECRET=${ONLYOFFICE_JWT_SECRET}
+    volumes:
+      - onlyoffice_data:/var/www/onlyoffice/Data
+      - onlyoffice_logs:/var/log/onlyoffice
+      - onlyoffice_lib:/var/lib/onlyoffice
+
+networks:
+  homelab:
+    external: true
+
+volumes:
+  onlyoffice_data:
+  onlyoffice_logs:
+  onlyoffice_lib:
