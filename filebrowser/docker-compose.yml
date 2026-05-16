@@ -1,5 +1,5 @@
 services:
-  server:
+  filebrowser:
     image: filebrowser/filebrowser
     container_name: filebrowser
     restart: unless-stopped

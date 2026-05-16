@@ -1,5 +1,5 @@
 services:
-  server:
+  forgejo:
     image: codeberg.org/forgejo/forgejo:15
     container_name: forgejo
     environment:

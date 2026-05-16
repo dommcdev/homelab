@@ -32,5 +32,5 @@ git.dommcdev.net {
         dns cloudflare {env.CLOUDFLARE_API_TOKEN}
         resolvers 1.1.1.1
     }
-    reverse_proxy forgejo:80
+    reverse_proxy forgejo:3000
 }
