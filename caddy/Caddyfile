@@ -26,11 +26,11 @@ photos.dommcdev.net {
     reverse_proxy immich-server:2283
 }
 
-# Forgejo
+# Gitea
 git.dommcdev.net {
     tls {
         dns cloudflare {env.CLOUDFLARE_API_TOKEN}
         resolvers 1.1.1.1
     }
-    reverse_proxy forgejo:3000
+    reverse_proxy gitea:3000
 }
