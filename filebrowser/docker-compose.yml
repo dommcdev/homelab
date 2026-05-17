@@ -9,6 +9,8 @@ services:
       - ~/files:/srv
       - ~/filebrowser/config:/config
       - ~/filebrowser/database:/database
+    environment:
+      - FB_TOKEN_EXPIRATION_TIME=500h
 
 networks:
   homelab:
