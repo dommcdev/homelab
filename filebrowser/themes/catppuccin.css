@@ -1,0 +1,241 @@
+:root,
+:root.dark {
+  /* Catppuccin Mocha */
+  --rosewater: #f5e0dc;
+  --flamingo: #f2cdcd;
+  --pink: #f5c2e7;
+  --mauve: #cba6f7;
+  --red: #f38ba8;
+  --dark-red: #eba0ac;
+  --maroon: #eba0ac;
+  --peach: #fab387;
+  --yellow: #f9e2af;
+  --green: #a6e3a1;
+  --teal: #94e2d5;
+  --sky: #89dceb;
+  --sapphire: #74c7ec;
+  --blue: #f9e2af;
+  --dark-blue: #f9e2af;
+  --lavender: #b4befe;
+  --text: #cdd6f4;
+  --subtext1: #bac2de;
+  --subtext0: #a6adc8;
+  --overlay2: #9399b2;
+  --overlay1: #7f849c;
+  --overlay0: #6c7086;
+  --surface2: #585b70;
+  --surface1: #45475a;
+  --surface0: #313244;
+  --base: #1e1e2e;
+  --mantle: #181825;
+  --crust: #11111b;
+
+  --moon-grey: var(--surface0);
+  --icon-red: var(--yellow);
+  --icon-orange: var(--yellow);
+  --icon-yellow: var(--yellow);
+  --icon-green: var(--yellow);
+  --icon-blue: var(--yellow);
+  --icon-violet: var(--yellow);
+
+  --input-red: rgba(243, 139, 168, 0.22);
+  --input-green: rgba(166, 227, 161, 0.22);
+  --item-selected: var(--crust);
+  --action: var(--yellow);
+
+  --background: var(--base);
+  --surfacePrimary: var(--mantle);
+  --surfaceSecondary: var(--surface0);
+  --divider: rgba(205, 214, 244, 0.12);
+  --iconPrimary: var(--yellow);
+  --iconSecondary: var(--crust);
+  --iconTertiary: var(--overlay1);
+  --textPrimary: var(--subtext1);
+  --textSecondary: var(--text);
+  --hover: rgba(249, 226, 175, 0.12);
+  --borderPrimary: rgba(205, 214, 244, 0.12);
+  --borderSecondary: rgba(249, 226, 175, 0.45);
+  --dividerPrimary: rgba(17, 17, 27, 0.45);
+  --dividerSecondary: rgba(17, 17, 27, 0.75);
+}
+
+body,
+#app,
+#login,
+.breadcrumbs,
+#search #result {
+  background: var(--background);
+  color: var(--textSecondary);
+}
+
+header,
+#listing .item,
+.card,
+.dashboard #content,
+#modal,
+#modal-background > div,
+.context-menu,
+.Toastify__toast {
+  background-color: var(--surfacePrimary);
+  color: var(--textSecondary);
+  border-color: var(--borderPrimary);
+}
+
+a,
+.action,
+#login p,
+.button--flat,
+.button--flat.button--grey,
+#search.active #result a {
+  color: var(--yellow);
+}
+
+a:hover,
+.action:hover,
+.breadcrumbs a:hover,
+#search.active #result ul li a:hover,
+nav .action:hover {
+  background-color: var(--hover);
+  color: var(--yellow);
+}
+
+.button,
+.button--blue,
+#listing .item[aria-selected="true"] {
+  background: var(--yellow) !important;
+  color: var(--crust) !important;
+  border-color: rgba(249, 226, 175, 0.45);
+}
+
+.button:hover,
+.button--blue:hover {
+  background: var(--yellow) !important;
+  color: var(--crust) !important;
+}
+
+.button--red,
+#login .wrong {
+  background: var(--red) !important;
+  color: var(--crust) !important;
+}
+
+#login .logout-message {
+  background: var(--yellow);
+  color: var(--crust);
+}
+
+.input,
+input,
+select,
+textarea,
+#search #input,
+.vue-number-input > input,
+.vue-number-input__button {
+  background-color: var(--surface0) !important;
+  color: var(--text) !important;
+  border-color: var(--borderPrimary) !important;
+}
+
+.input:hover,
+.input:focus,
+input:hover,
+input:focus,
+select:hover,
+select:focus,
+textarea:hover,
+textarea:focus,
+#search #input:focus-within,
+.vue-number-input :hover,
+.vue-number-input :focus {
+  border-color: var(--borderSecondary) !important;
+}
+
+::placeholder,
+#search #input input::placeholder {
+  color: var(--overlay1) !important;
+}
+
+#listing .item:hover,
+#listing.list .item.header,
+.input--red,
+.input--green {
+  background-color: var(--surface0) !important;
+}
+
+#listing .item.header,
+#listing.list .item,
+header,
+.breadcrumbs,
+#search.active #input {
+  border-color: var(--borderPrimary);
+}
+
+#listing .item .size,
+#listing .item .modified,
+.breadcrumbs,
+.breadcrumbs span,
+#search.active i,
+#search.active input {
+  color: var(--textPrimary);
+}
+
+#listing h2,
+.message,
+#search #result,
+#search.active #result i {
+  color: var(--subtext1);
+}
+
+.progress div,
+.upload-files .progress div,
+.upload-files .file .file-progress div,
+.vue-simple-progress-bar {
+  background-color: var(--yellow) !important;
+}
+
+.vue-simple-progress {
+  background: var(--surface0) !important;
+}
+
+.action .counter,
+.dashboard #nav ul li.active::before,
+.file-list li[aria-selected="true"] {
+  background: var(--yellow) !important;
+  color: var(--crust) !important;
+}
+
+.dashboard #nav ul li.active,
+.card#share ul li a,
+.link,
+.shell__prompt i,
+.share__box__icon i,
+#loading .spinner > div,
+main .spinner > div,
+#previewer .spinner > div,
+.file-icons i,
+.file-list li:before {
+  color: var(--yellow) !important;
+}
+
+.card#share .action.copy-clipboard::after {
+  background: var(--yellow);
+  color: var(--crust);
+}
+
+nav > div,
+#login form {
+  background: transparent !important;
+}
+
+header,
+#listing.mosaic .item,
+.card,
+.dashboard #content,
+#modal-background > div {
+  box-shadow: 0 1px 8px rgba(17, 17, 27, 0.35);
+}
+
+::selection {
+  background: rgba(249, 226, 175, 0.32);
+  color: var(--text);
+}

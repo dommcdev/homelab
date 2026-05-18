@@ -9,6 +9,7 @@ services:
       - ~/files:/srv
       - ~/filebrowser/config:/config
       - ~/filebrowser/database:/database
+      - ~/filebrowser/branding:/branding
     environment:
       - FB_TOKEN_EXPIRATION_TIME=500h
 

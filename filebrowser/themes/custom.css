@@ -1,0 +1,18 @@
+:root,
+:root.dark {
+  --accent: #fab387;
+  --blue: var(--accent);
+  --dark-blue: var(--accent);
+  --iconPrimary: var(--accent);
+  --icon-blue: var(--accent);
+
+  .action .counter,
+  #listing .item[aria-selected="true"],
+  .file-list li[aria-selected="true"],
+  .progress div,
+  .upload-files .file .file-progress div,
+  .vue-simple-progress-bar,
+  .card#share .action.copy-clipboard::after {
+    background-color: var(--accent) !important;
+  }
+}
