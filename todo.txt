@@ -1,0 +1,5 @@
+Add some config files for these
+Update readme
+Filebrowser onlyoffice integration
+Navidrome (+ client)
+Finish github mirroring
