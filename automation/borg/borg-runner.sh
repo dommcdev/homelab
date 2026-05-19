@@ -15,7 +15,7 @@ profile_files() {
         ["local-raid"]="/mnt/storage/backups/files-backup"
         ["remote-kabigon"]="ssh://kabigon/mnt/storage/backups/files-backup"
     )
-    run_backup_pipeline "Files" "$SOURCE_DIR" RETENTION TARGETS
+    run_backup_pipeline "files" "$SOURCE_DIR" RETENTION TARGETS
 }
 
 profile_photos() {
@@ -25,7 +25,7 @@ profile_photos() {
         ["local-raid"]="/mnt/storage/backups/photos-backup"
 #        ["remote-kabigon"]="ssh://kabigon/mnt/storage/backups/photos-backup"
     )
-    run_backup_pipeline "Photos" "$SOURCE_DIR" RETENTION TARGETS
+    run_backup_pipeline "photos" "$SOURCE_DIR" RETENTION TARGETS
 }
 
 run_backup_pipeline() {
@@ -63,7 +63,7 @@ run_backup_pipeline() {
 
         # --- Create Backup ---
         echo "--> Action: Generating incremental archive..."
-        borg create --stats "$repo_uri::{hostname}-$category-%%Y-%%m-%%d" "$source"
+        borg create --stats "$repo_uri::{hostname}-$category-{now}" "$source"
 
         # --- Prune According to Profile Grid ---
         echo "--> Action: Applying retention policy..."
