@@ -23,7 +23,7 @@ profile_photos() {
     RETENTION=(14 8 12) # Photos get a longer historical net
     declare -A TARGETS=(
         ["local-raid"]="/mnt/storage/backups/photos-backup"
-        ["remote-kabigon"]="ssh://kabigon/mnt/storage/backups/photos-backup"
+#        ["remote-kabigon"]="ssh://kabigon/mnt/storage/backups/photos-backup"
     )
     run_backup_pipeline "Photos" "$SOURCE_DIR" RETENTION TARGETS
 }
@@ -83,6 +83,6 @@ run_backup_pipeline() {
 
 # Call profiles here
 profile_files
-#profile_photos
+profile_photos
 
 echo "=== Backup Suite Finished Successfully ==="
