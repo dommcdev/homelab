@@ -1,0 +1,7 @@
+[Unit]
+Description=Multi-repo Borg Backup Engine
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/dev/homelab/timers/borg-runner.sh
