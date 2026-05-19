@@ -4,4 +4,4 @@ After=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=%h/dev/homelab/timers/borg-runner.sh
+ExecStart=%h/.local/bin/borg-runner.sh

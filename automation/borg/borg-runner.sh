@@ -83,6 +83,6 @@ run_backup_pipeline() {
 
 # Call profiles here
 profile_files
-profile_photos
+#profile_photos
 
 echo "=== Backup Suite Finished Successfully ==="
