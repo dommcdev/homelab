@@ -1,43 +1,17 @@
-# Homelab Setup
+# Homelab
 
-Filebrowser, OnlyOffice, Immich, Gitlab, etc, via Caddy w/DNS-01 challenge
+Filebrowser, OnlyOffice, Immich, Gitea, etc. Accessable on my Tailscale network via Caddy and the Cloudflare DNS-01 challenge.
 
+## Setup
 
-### 1. Configure Caddy
-
-```bash
-cd caddy
-cp .env.example .env
-# Edit .env and add your Cloudflare API token
-docker compose up -d
-```
-
-### 2. Configure FileBrowser
+### Start docker containers
 
 ```bash
-cd filebrowser
-cp .env.example .env # Set a secure JWT secret
-
-# If necessary, build local docker image
-gh repo clone dommcdev/filebrowser-onlyoffice && cd filebrowser-onlyoffice
-CGO_ENABLED=0 task build
-docker build -t filebrowser-onlyoffice .
-
-mkdir -p ~/filebrowser/config ~/filebrowser/database ~/files && chown -R 1000:1000 ~/filebrowser ~/files
-
-docker compose up -d
-
-# Get admin password (username is admin)
-docker compose logs filebrowser | grep "password:"
+cd container-dir
+cp .env.example .env #edit as needed
+make up
 ```
+Start the Caddy container last (otherwise it won't know about all the other containers it is proxying).
 
-### 3. Configure Immich
-
-```bash
-cd immich
-cp .env.example .env #change postgress secret if desired
-
-mkdir -p ~/immich ~/files && chown -R 1000:1000 ~/immich ~/files
-
-docker-compose up -d
-```
+## Troubleshooting
+Start and stop the containers a few times. This usually fixes things.
