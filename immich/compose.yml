@@ -23,8 +23,6 @@ services:
       - /home/dominic/photos:/files/photos:rw
     env_file:
       - .env
-    ports:
-      - "2283:2283"
     depends_on:
       - redis
       - database
