@@ -6,10 +6,10 @@ services:
     networks:
       - homelab
     volumes:
-      - ~/files:/srv
-      - ~/filebrowser/config:/config
-      - ~/filebrowser/database:/database
-      - ~/filebrowser/branding:/branding
+      - "~/files:/srv"
+      - "~/app/filebrowser/config:/config"
+      - "~/app/filebrowser/database:/database"
+      - "~/app/filebrowser/branding:/branding"
     environment:
       - FB_TOKEN_EXPIRATION_TIME=500h
 

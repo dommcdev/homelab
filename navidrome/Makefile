@@ -1,7 +1,7 @@
 .PHONY: up down
 
 up:
-	@mkdir -p ~/files ~/app/filebrowser/config ~/app/filebrowser/database
+	@mkdir -p ~/music ~/app/navidrome
 	docker compose up -d
 
 down:
