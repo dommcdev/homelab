@@ -1,7 +1,7 @@
 .PHONY: up down
 
 up:
-	@mkdir -p ~/photos ~/immich
+	@mkdir -p ~/photos ~/app/immich
 	docker compose up -d
 
 down:
