@@ -1,46 +1,37 @@
-# FileBrowser
-cloud.dommcdev.net {
+# Cloudflare TLS
+(cloudflare_tls) {
     tls {
         dns cloudflare {env.CLOUDFLARE_API_TOKEN}
         resolvers 1.1.1.1
     }
-    #respond "Hello from Caddy! SSL for cloud is working"
+}
+
+# FileBrowser
+cloud.dommcdev.net {
+    import cloudflare_tls
     reverse_proxy filebrowser:80
 }
 
 # OnlyOffice Document Server CE
 office.dommcdev.net {
-    tls {
-        dns cloudflare {env.CLOUDFLARE_API_TOKEN}
-        resolvers 1.1.1.1
-    }
+    import cloudflare_tls
     reverse_proxy onlyoffice:80
 }
 
 # Immich
 photos.dommcdev.net {
-    tls {
-        dns cloudflare {env.CLOUDFLARE_API_TOKEN}
-        resolvers 1.1.1.1
-    }
+    import cloudflare_tls
     reverse_proxy immich-server:2283
 }
 
 # Gitea
 git.dommcdev.net {
-    tls {
-        dns cloudflare {env.CLOUDFLARE_API_TOKEN}
-        resolvers 1.1.1.1
-    }
+    import cloudflare_tls
     reverse_proxy gitea:3000
 }
 
-
 # Navidrome
 music.dommcdev.net {
-    tls {
-        dns cloudflare {env.CLOUDFLARE_API_TOKEN}
-        resolvers 1.1.1.1
-    }
+    import cloudflare_tls
     reverse_proxy navidrome:4533
 }
