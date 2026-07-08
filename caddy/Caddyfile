@@ -35,3 +35,9 @@ music.dommcdev.net {
     import cloudflare_tls
     reverse_proxy navidrome:4533
 }
+
+# Aonsoku (Navidrome client)
+aonsoku.dommcdev.net {
+    import cloudflare_tls
+    reverse_proxy aonsoku:8080
+}

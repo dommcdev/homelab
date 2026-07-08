@@ -1,0 +1,11 @@
+services:
+  aonsoku:
+    container_name: aonsoku
+    image: ghcr.io/victoralvesf/aonsoku:latest
+    restart: unless-stopped
+    networks:
+      - homelab
+
+networks:
+  homelab:
+    external: true
