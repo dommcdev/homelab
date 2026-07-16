@@ -31,13 +31,13 @@ git.dommcdev.net {
 }
 
 # Navidrome
-music.dommcdev.net {
+navidrome.dommcdev.net {
     import cloudflare_tls
     reverse_proxy navidrome:4533
 }
 
-# Aonsoku (Navidrome client)
-aonsoku.dommcdev.net {
+# Feishin (Navidrome client)
+music.dommcdev.net {
     import cloudflare_tls
-    reverse_proxy aonsoku:8080
+    reverse_proxy feishin:9180
 }

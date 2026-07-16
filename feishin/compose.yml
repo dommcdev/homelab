@@ -1,0 +1,17 @@
+services:
+  feishin:
+    container_name: feishin
+    image: "ghcr.io/jeffvli/feishin:latest"
+    restart: unless-stopped
+    networks:
+      - homelab
+    environment:
+      - SERVER_NAME=music # pre-defined server name
+      - SERVER_LOCK=true # When true AND name/type/url are set, only username/password can be toggled
+      - SERVER_TYPE=navidrome # the allowed types are: jellyfin, navidrome, subsonic. These values are case insensitive
+      - SERVER_URL=https://navidrome.dommcdev.net # http://address:port or https://address:port
+      - ANALYTICS_DISABLED=true # Set to true to disable Umami analytics tracking
+
+networks:
+  homelab:
+    external: true
