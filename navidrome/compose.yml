@@ -8,9 +8,8 @@ services:
     restart: unless-stopped
     networks:
       - homelab
-    #    environment:
-    # Optional: put your config options customization here. Examples:
-    # ND_LOGLEVEL: debug
+    environment:
+      - ND_SESSIONTIMEOUT=720h
     volumes:
       - "~/app/navidrome:/data"
       - "~/music:/music:ro"
