@@ -23,3 +23,6 @@ install:
 
 #borg init --encryption=repokey-blake2 ssh://kabigon/mnt/storage/backups/files-backup
 #borg init --encryption=repokey-blake2 /mnt/storage/backups/files-backup
+
+# With the above cmds the data will be encrypted with a master key.
+# However, unless you set a passphrase when prompted that key itself will not be encrypted
