@@ -1,0 +1,51 @@
+services:
+  nextexplorer:
+    image: nxzai/explorer:latest
+    container_name: nextexplorer
+    restart: unless-stopped
+    networks:
+      - homelab
+    volumes:
+      - ~/app/nextexplorer/config:/config
+      - ~/app/nextexplorer/cache:/cache
+      - ~/files:/mnt/Files
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+      PUBLIC_URL: "https://files.dommcdev.net" # External URL (no trailing slash); drives cookies, CORS defaults, and derived callback URLs. Accessing the app via a different URL may cause CORS/cookie/OIDC issues.
+      SEARCH_DEEP: "true" # Enables deep content search (ripgrep used when `SEARCH_RIPGREP=true`).
+      SEARCH_RIPGREP: "true" # Prefer ripgrep for fast searches; fallback search used when unavailable.
+      SHOW_VOLUME_USAGE: "true" # Show volume usage badges in the sidebar.
+
+      ONLYOFFICE_URL: "https://office.dommcdev.net" # Public URL for OnlyOffice Document Server (must reach your app's `PUBLIC_URL`).
+      ONLYOFFICE_SECRET: ${ONLYOFFICE_JWT_SECRET} # JWT secret shared with OnlyOffice Document Server for `/api/onlyoffice`.
+      ONLYOFFICE_LANG: "en" # Language code for the editor UI.
+      # ONLYOFFICE_FORCE_SAVE: "false" # When `true`, OnlyOffice forces users to save via the editor UI.
+      # ONLYOFFICE_FILE_EXTENSIONS: "" # Extra file extensions to surface to the Document Server.
+
+      # Container user mapping (optional)
+      PUID: "1000" # Map container processes to host UID so created files have consistent ownership.
+      PGID: "1000" # Map container processes to host GID so created files have consistent ownership.
+
+  onlyoffice:
+    image: onlyoffice/documentserver:latest
+    container_name: onlyoffice
+    restart: unless-stopped
+    networks:
+      - homelab
+    environment:
+      - JWT_ENABLED=true
+      - JWT_SECRET=${ONLYOFFICE_JWT_SECRET}
+    volumes:
+      - onlyoffice_data:/var/www/onlyoffice/Data
+      - onlyoffice_logs:/var/log/onlyoffice
+      - onlyoffice_lib:/var/lib/onlyoffice
+
+networks:
+  homelab:
+    external: true
+
+volumes:
+  onlyoffice_data:
+  onlyoffice_logs:
+  onlyoffice_lib:

@@ -1,3 +1,1 @@
 Add some config files for these
-Filebrowser onlyoffice integration
-Navidrome (+ client)

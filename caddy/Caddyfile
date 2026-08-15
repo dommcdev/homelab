@@ -12,6 +12,12 @@ cloud.dommcdev.net {
     reverse_proxy filebrowser:80
 }
 
+# NextExplorer
+files.dommcdev.net {
+    import cloudflare_tls
+    reverse_proxy nextexplorer:3000
+}
+
 # OnlyOffice Document Server CE
 office.dommcdev.net {
     import cloudflare_tls
