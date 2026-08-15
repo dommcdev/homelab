@@ -18,6 +18,16 @@ profile_files() {
     run_backup_pipeline "files" "$SOURCE_DIR" RETENTION TARGETS
 }
 
+profile_music() {
+    SOURCE_DIR="$HOME/music"
+    RETENTION=(7 4 6)
+    declare -A TARGETS=(
+        ["local-raid"]="/mnt/storage/backups/music-backup"
+        ["remote-kabigon"]="ssh://kabigon/mnt/storage/backups/music-backup"
+    )
+    run_backup_pipeline "music" "$SOURCE_DIR" RETENTION TARGETS
+}
+
 profile_photos() {
     SOURCE_DIR="$HOME/photos"
     RETENTION=(14 8 12) # Photos get a longer historical net
@@ -84,5 +94,6 @@ run_backup_pipeline() {
 # Call profiles here
 profile_files
 profile_photos
+profile_music
 
 echo "=== Backup Suite Finished Successfully ==="
