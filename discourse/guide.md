@@ -8,9 +8,6 @@ We need to perform SSL termination. Use the cathsocial.com.ssl.conf file and res
 
 ### Step 2: Setup discourse
 ```bash
-# Clone our Discourse configs
-git clone https://github.com/discourse/discourse_docker.git /var/discourse
-
 # Clone the discourse repo
 git clone https://github.com/discourse/discourse_docker.git /var/discourse
 cd /var/discourse

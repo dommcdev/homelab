@@ -1,0 +1,23 @@
+/* Show homepage logo where the welcome banner would normally be */
+body.navigation-topics #main-outlet::before,
+body.navigation-categories #main-outlet::before,
+body.navigation-latest #main-outlet::before {
+  content: "";
+  display: block;
+  width: 100%;
+  min-height: 200px;
+  margin-top: -20px;
+  margin-bottom: 25px;
+
+  background-image: url($cathsocial-logo);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: transparent;
+
+  box-shadow: none;
+  border: none;
+  pointer-events: none;
+}
+
+/* Make a custom component with the following code. Make sure you add image image with the var name cathsocial-logo*/
